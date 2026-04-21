@@ -23,4 +23,5 @@ public class TimeServlet extends HttpServlet {
         resp.setContentType("text/html");
         resp.getWriter().write("<h1>" + now.format(formatter) + "</h1>");
     }
+
 }
