@@ -1,0 +1,97 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Time App</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+        }
+
+        main {
+            padding: 30px 40px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        input {
+            padding: 10px;
+            width: 220px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            margin-bottom: 15px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            background: #2563eb;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1e40af;
+        }
+
+        a {
+            display: block;
+            margin-top: 15px;
+            color: #2563eb;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<main>
+    <h1>Time App</h1>
+
+    <form id="timeForm">
+        <input type="number" id="tzInput" placeholder="Enter offset (e.g. 3 or -2)">
+        <br>
+        <button type="submit">Get Time</button>
+    </form>
+
+    <a href="/time">Check UTC Time</a>
+</main>
+
+</body>
+<script>
+    const form = document.getElementById("timeForm");
+    const input = document.getElementById("tzInput");
+
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        let value = input.value.trim();
+
+        if (!value) {
+            window.location.href = "/time";
+            return;
+        }
+
+        let sign = value.startsWith("-") ? "" : "+";
+
+        let timezone = "UTC" + sign + value;
+
+        timezone = encodeURIComponent(timezone);
+
+        window.location.href = "/time?timezone=" + timezone;
+    });
+</script>
+</html>
