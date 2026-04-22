@@ -12,7 +12,6 @@ public class TimeService {
     public String getTime(String timezone) {
 
         timezone = normalize(timezone);
-
         ZoneId zone;
 
         if (timezone == null || timezone.isEmpty()) {
@@ -20,7 +19,6 @@ public class TimeService {
         } else {
             zone = ZoneId.of(timezone);
         }
-
         ZonedDateTime now = ZonedDateTime.now(zone);
         return now.format(formatter);
     }

@@ -30,7 +30,6 @@ public class TimezoneValidateFilter implements Filter {
                 return;
             }
         }
-
         chain.doFilter(request, response);
     }
 

@@ -17,7 +17,6 @@ public class TimeServlet extends HttpServlet {
             throws IOException, ServletException {
 
         String timezone = req.getParameter("timezone");
-
         String result = service.getTime(timezone);
 
         req.setAttribute("time", result);
